@@ -1,0 +1,71 @@
+{# <form action="http://b2b.nex.es">
+    <input type="submit" name='client' value="Soy cliente" />
+</form>
+<form action="{{ path('inscription') }}" method='POST'>
+    <input type="submit" name='no_client' value="No soy cliente" />
+</form> #}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Creative - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}" />
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end">
+                        <img src="{{ asset('assets/img/logo-nex.png') }}" alt="logo-nex" width="160" height="54">
+                        <hr class="divider" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere nulla nulla, sed sollicitudin neque convallis eget. Phasellus metus nunc, pretium id sollicitudin vitae, bibendum ut dui. Sed orci dui, varius et egestas ac, pulvinar ac felis. Phasellus suscipit ut ligula at mollis. Mauris ac neque at odio finibus imperdiet vitae vitae nisi. Maecenas a dolor fringilla, lacinia urna sit amet, hendrerit eros. Sed varius tempus est eget aliquam.
+
+Aliquam nisi lacus, hendrerit eget scelerisque non, pellentesque eu ligula. Aliquam lectus augue, scelerisque ut malesuada a, malesuada vel nisi. Cras rhoncus dignissim sem, eget feugiat justo vestibulum egestas. Nullam lacus sem, imperdiet eget dapibus in, sodales sed dui. Vivamus porttitor, diam cursus suscipit laoreet, mauris leo pharetra nisl, sit amet viverra neque lacus at est. Fusce quis tellus tincidunt, euismod nibh id, efficitur lorem. Cras commodo libero risus, eget finibus est dictum non. In ut nisi fermentum, aliquam justo sed, condimentum nisi. Integer finibus metus sed accumsan egestas. Etiam porttitor aliquet arcu, ac pulvinar felis pharetra nec. Quisque mauris eros, tincidunt vel ultricies eget, interdum vitae ligula. Aenean et ligula scelerisque, ornare quam sed, tincidunt dolor. Curabitur at rhoncus metus. Proin fermentum mauris nec nibh volutpat ultricies. Aenean a libero dictum ligula viverra tempor id ut diam.
+
+Maecenas venenatis nunc ut purus porta ultricies. Sed placerat, neque vel egestas tempor, magna dui pulvinar nunc, ac tristique mi enim sed orci. Proin pharetra turpis diam, vel placerat neque consequat a. Proin ac aliquam odio. Vestibulum commodo in tellus a vulputate. Praesent mi tortor, mattis ut pellentesque quis, tincidunt vel quam. Phasellus ante urna, pharetra sed convallis nec, imperdiet a ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis vitae pulvinar neque. Nunc tortor ante, aliquam eget nisi non, feugiat posuere leo. Duis laoreet accumsan mauris in rhoncus.
+
+Nunc sagittis purus vel urna laoreet, quis euismod ligula maximus. Etiam consectetur lobortis lorem tempus laoreet. Praesent et sapien a ligula cursus laoreet a nec lectus. Donec eget varius ipsum. Phasellus nec cursus justo, quis efficitur mi. Cras fringilla, arcu in facilisis maximus, diam sapien rhoncus est, ut aliquet lacus arcu porta risus. Nullam eget lorem laoreet, rhoncus eros at, bibendum massa. Pellentesque laoreet quam sed neque porta, ac feugiat lorem consectetur.
+</p>
+                        {# <a class="btn btn-primary btn-l" href="http://b2b.nex.es">Soy cliente</a>
+                        <a class="btn btn-primary btn-l" href="{{ path('inscription') }}">No soy cliente</a> #}
+                    </div>
+                    {# <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - NEX</div></div> #}
+                </div>
+            </div>
+            
+        </header>
+        
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Company Name</div></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{{ asset('js/scripts.js') }}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        {# <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> #}
+    </body>
+</html>
