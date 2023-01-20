@@ -32,6 +32,7 @@ class InscriptionController extends AbstractController
             if ($insRepository->isUnique($inscription->getCIF())) {
                 $inscription->setEstado(false);
                 $inscription->setCreated();
+                $inscription->setUpdated();
                 
                 $entityManager->persist($inscription);
                 $entityManager->flush();

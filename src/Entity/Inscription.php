@@ -36,7 +36,7 @@ class Inscription
     #[ORM\Column(length: 255)]
     private ?string $created = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $updated = null;
 
     #[ORM\Column]
