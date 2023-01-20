@@ -39,6 +39,17 @@ class InscriptionRepository extends ServiceEntityRepository
         }
     }
 
+    public function isUnique(string $CIF): bool
+    {
+        $result = $this->createQueryBuilder('p')
+            ->andWhere('p.CIF = :cif')
+            ->setParameter('cif', $CIF)
+            ->getQuery()
+            ->getResult()
+            ;
+        return empty($result);
+    }
+
 //    /**
 //     * @return Inscription[] Returns an array of Inscription objects
 //     */

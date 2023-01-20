@@ -15,7 +15,7 @@ class Inscription
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $CIF = null;
 
     #[ORM\Column(length: 255)]
@@ -33,13 +33,14 @@ class Inscription
     #[ORM\Column]
     private ?bool $condicioneslegales = null;
 
-    // #[Gedmo\Timestampable(on: 'create')]
-    // #[ORM\Column(name: 'created', type: Types::DATE_MUTABLE)]
-    // private $created;
+    #[ORM\Column(length: 255)]
+    private ?string $created = null;
 
-    // #[ORM\Column(name: 'updated', type: Types::DATETIME_MUTABLE)]
-    // #[Gedmo\Timestampable]
-    // private $updated;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $updated = null;
+
+    #[ORM\Column]
+    private ?bool $estado = null;
 
     public function getId(): ?int
     {
@@ -115,6 +116,33 @@ class Inscription
     {
         $this->condicioneslegales = $condicioneslegales;
 
+        return $this;
+    }
+
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function setCreated()
+    {
+        $this->created = date("d-m-Y H:i:s");
+        return $this;
+    }
+
+    public function getUpdated()
+    {
+        $this->updated = date("d-m-Y H:i:s");
+        return $this;
+    }
+
+    public function getEstado(): ?bool
+    {
+        return $this->estado;
+    }
+
+    public function setEstado(bool $estado): self {
+        $this->estado = $estado;
         return $this;
     }
 }

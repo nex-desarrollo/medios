@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\InscriptionRepository;
 
 class InscriptionController extends AbstractController
 {
@@ -20,17 +21,25 @@ class InscriptionController extends AbstractController
     }
 
     #[Route('/inscription', name: 'inscription')]
-    public function inscription(Request $request, ManagerRegistry $doctrine): Response
+    public function inscription(Request $request, ManagerRegistry $doctrine, InscriptionRepository $insRepository): Response
     {
         $inscription = new Inscription();
+        $entityManager = $doctrine->getManager();
         $form = $this->createForm(InscriptionType::class, $inscription);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $doctrine->getManager();
-            $entityManager->persist($inscription);
-            $entityManager->flush();
-            return $this->redirectToRoute('valid_inscription');
+            if ($insRepository->isUnique($inscription->getCIF())) {
+                $inscription->setEstado(false);
+                $inscription->setCreated();
+                
+                $entityManager->persist($inscription);
+                $entityManager->flush();
+                return $this->redirectToRoute('valid_inscription');
+            } else {
+                print_r('El CIF introducido ya existe. Vuelve atrás.');
+                die();
+            } 
         }
         
         return $this->render('inscription.html.twig', [

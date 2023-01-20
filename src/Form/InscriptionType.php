@@ -24,12 +24,12 @@ class InscriptionType extends AbstractType
     public function createChoices(): array
     {
         $provincias = new Provincia();
-        $provincias = $this->provinciaRepository->findAll();
+        $provincias = $this->provinciaRepository->findAllSorted();
 
         foreach ($provincias as $provincia) {
             $choices[$provincia->getNombre()] = $provincia->getNombre();
         }
-        return $choices; 
+        return $choices;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
