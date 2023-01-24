@@ -1,0 +1,89 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block content %}
+
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0">Inscripciones</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{path('index_admin')}}">Home</a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <div class="row" id="basic-table">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Inscripciones</h4>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>CIF</th>
+                                        <th>nombre</th>
+                                        <th>correo</th>
+                                        <th>telefono</th>
+                                        <th>provincia</th>
+                                        <th>fecha/hora</th>
+                                        <th>estado</th>
+                                        <th>acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for inscription in inscriptions %}
+                                    <tr>
+                                        <td>{{inscription.cif}}</td>
+                                        <td>{{inscription.nombre}}</td>
+                                        <td>{{inscription.email}}</td>
+                                        <td>{{inscription.telefono}}</td>
+                                        <td>{{inscription.provincia}}</td>
+                                        <td>{{inscription.created}}</td>
+                                        <td>{% if inscription.estado == 0 %}
+                                            <span class="badge rounded-pill badge-light-warning me-1">Pendiente</span>
+                                            {% else %}
+                                            <span class="badge rounded-pill badge-light-success me-1">Alta</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+                                                    <i data-feather="more-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="{{ path('edit_user', {'id': inscription.id}) }}">
+                                                        <i data-feather="edit-2" class="me-50"></i>
+                                                        <span>Edit</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                            
+{% endblock %}

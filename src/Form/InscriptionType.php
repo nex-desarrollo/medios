@@ -48,6 +48,10 @@ class InscriptionType extends AbstractType
                     new Assert\NotBlank()
                 ]
             ])
+            ->add('estado', CheckboxType::class, [
+                'label' => 'Activo',
+                'required' => false
+            ])
         ;
     }
 

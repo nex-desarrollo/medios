@@ -1,0 +1,43 @@
+<!-- BEGIN: Footer-->
+<footer class="footer footer-static footer-light">
+    <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">&copy; {{"now"|date("Y")}}<a class="ms-25" href="https://www.nex.es/" target="_blank">- Nex.es</a><span class="d-none d-sm-inline-block"></span></p>
+</footer>
+<button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+<!-- END: Footer-->
+
+{% block javascripts %}
+    <!-- BEGIN: Vendor JS-->
+    <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+
+    <script src="{{ asset('app-assets/vendors/js/extensions/toastr.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/js/file-uploaders/dropzone.min.js') }}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{{ asset('app-assets/js/core/app-menu.js') }}"></script>
+    <script src="{{ asset('app-assets/js/core/app.js') }}"></script>
+    <!-- END: Theme JS-->
+
+    <script src="https://cdn.tiny.cloud/1/kc0j43jnsl76p9q39yg4nuo5ghnjwvchuzfy2jpqf2wwibco/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
+    <script src="../../../app-assets/js/scripts/forms/form-file-uploader.js"></script>
+    <script>
+        $(window).on('load', function() {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        })
+    </script>
+
+{% endblock %}
+
+{% block custom_scripts %}{% endblock %}

@@ -1,0 +1,117 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Servicio index{% endblock %}
+
+{% block content %}
+
+<!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper container-xxl p-0">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-start mb-0">Slides</h2>
+                            <div class="breadcrumb-wrapper">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{path('index_admin')}}">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Editar
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="content-body">
+                <!-- users edit start -->
+                <section class="app-user-edit">
+                    <div class="card">
+                        <div class="card-body">
+                            
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="perfil" aria-labelledby="perfil-tab" role="tabpanel">
+
+                                    
+                                    <!-- users edit account form start -->
+                                    {{ form_start(form, {'action': path('edit_user', {'id' : inscription.id}), 'method': 'POST'}) }}
+                                        {{ form_row(form._token) }}
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-1">
+                                                    {{ form_errors(form) }}
+                                                </div>
+                                            </div>
+                                        
+                                           <div class="col-md-12">
+                                                <div class="mb-1">
+                                                    {{ form_label(form.CIF, 'CIF') }}
+                                                    {{ form_widget(form.CIF, {'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="mb-1">
+                                                    {{ form_label(form.nombre, 'Nombre') }}
+                                                    {{ form_widget(form.nombre, {'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="mb-1">
+                                                    {{ form_label(form.email, 'Correo') }}
+                                                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="mb-1">
+                                                    {{ form_label(form.telefono, 'Telefono') }}
+                                                    {{ form_widget(form.telefono, {'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="mb-1">
+                                                    {{ form_label(form.provincia, 'Provincia') }}
+                                                    {{ form_widget(form.provincia, {'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="mb-1">
+                                                    {{ form_label(form.estado, 'Estado') }}
+                                                    <div class="form-check form-check-primary form-switch">
+                                                        {{ form_widget(form.estado, {'attr': {'class': 'form-check-input'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="mb-1">
+                                                    {{ form_label(form.condicioneslegales, 'Condiciones Legales') }}
+                                                    {{ form_widget(form.condicioneslegales, {'attr': {'class': 'hidden-row'}}) }}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-2 d-flex flex-sm-row flex-column mt-2">
+                                                <button type="submit" class="btn btn-primary mb-1 mb-sm-0 me-0 me-sm-1">Guardar</button>
+                                            </div>
+                                        </div>
+                                    {{ form_end(form, {'render_rest': false}) }}
+                                    <!-- users edit account form ends -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- users edit ends -->
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+
+
+    
+{% endblock %}

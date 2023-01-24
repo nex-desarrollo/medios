@@ -11,17 +11,21 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\InscriptionRepository;
+use Symfony\Bundle\SecurityBundle\Security;
 
 class InscriptionController extends AbstractController
 {
     #[Route('/', name: 'app_inscription')]
-    public function index(): Response
+    public function index(Security $security): Response
     {
+        if ($security->getUser() != null) {
+            return $this->redirect('/admin');
+        }
         return $this->render('index.html.twig');
     }
 
     #[Route('/inscription', name: 'inscription')]
-    public function inscription(Request $request, ManagerRegistry $doctrine, InscriptionRepository $insRepository): Response
+    public function inscription(Request $request, ManagerRegistry $doctrine, InscriptionRepository $inscRepository): Response
     {
         $inscription = new Inscription();
         $entityManager = $doctrine->getManager();
@@ -29,7 +33,7 @@ class InscriptionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($insRepository->isUnique($inscription->getCIF())) {
+            if ($inscRepository->isUnique($inscription->getCIF())) {
                 $inscription->setEstado(false);
                 $inscription->setCreated();
                 $inscription->setUpdated();
