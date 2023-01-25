@@ -130,7 +130,7 @@ class Inscription
         return $this;
     }
 
-    public function getUpdated()
+    public function setUpdated()
     {
         $this->updated = date("d-m-Y H:i:s");
         return $this;
