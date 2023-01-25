@@ -12,7 +12,7 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-start mb-0">Inscripciones</h2>
+                        <h2 class="content-header-title float-start mb-0">Inscripciones Medios</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
@@ -30,16 +30,20 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Inscripciones</h4>
-
-                            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                            <div style="display: flex; justify-content: flex-end; margin-left: auto; gap: 20px;">
                                 <form method="POST" action="{{ path('index_admin')}}">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Email" aria-describedby="button-addon2" name="search_email" />
+                                        <input type="text" class="form-control" style="text-align: center" placeholder="Email" aria-describedby="button-addon2" name="search_email" value="{{email}}" />
                                         <button class="btn btn-outline-primary" id="button-addon2" type="submit">Buscar</button>
                                     </div>
                                 </form>
-                                <a href="{{ path('export') }}" class='btn btn-primary'>Exportar</a>
+                                <form method="POST" action="{{ path('index_admin')}}">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" style="text-align: center" placeholder="CIF" aria-describedby="button-addon2" name="search_CIF" value="{{CIF}}" />
+                                        <button class="btn btn-outline-primary" id="button-addon2" type="submit">Buscar</button>
+                                    </div>
+                                </form>
+                                <a href="{{ path('export') }}" class='btn btn-primary'>Exportar CSV</a>
                             </div>
                         </div>
                         

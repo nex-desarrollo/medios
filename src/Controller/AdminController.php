@@ -18,13 +18,18 @@ class AdminController extends AbstractController
     public function index(Request $request, InscriptionRepository $inscRepository): Response
     {
         $email = $request->request->get('search_email');
+        $cif = $request->request->get('search_CIF');
         
         if ($request->getMethod() == 'POST' && $email != null)
             $inscriptions = $inscRepository->findByEmail($email);
+        else if ($request->getMethod() == 'POST' && $cif != null)
+            $inscriptions = $inscRepository->findByCIF($cif);
         else
             $inscriptions = $inscRepository->findAllSortedByDate();
         
-            return $this->render('admin/users.html.twig', [
+        return $this->render('admin/users.html.twig', [
+            'email' => $email,
+            'CIF' => $cif,
             'inscriptions' => $inscriptions
         ]);
     }
@@ -55,7 +60,7 @@ class AdminController extends AbstractController
         $users = $inscRepository->findAllSortedByDate();
 
         foreach ($users as $user) {
-            $data[] = array($user->getCIF(), $user->getNombre(), $user->getEmail(), $user->getTelefono(), $user->getProvincia(), $user->getCreated(), $user->getUpdated(), $user->getEstado());
+            $data[] = array($user->getCIF(), $user->getNombre(), $user->getEmail(), $user->getTelefono(), $user->getProvincia(), $user->getCreated(), $user->getUpdated(), $user->getEstado() == 0 ? 'pendiente' : 'alta');
         }
 
         // Create a response object

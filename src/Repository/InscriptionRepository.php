@@ -72,4 +72,18 @@ class InscriptionRepository extends ServiceEntityRepository
         $stmt = $conn->prepare($sql);
         return $stmt->executeQuery()->fetchAllAssociative();
     }
+
+    public function findByCIF(string $cif)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT *
+            FROM inscription p
+            WHERE p.CIF LIKE "%'.$cif.'%"
+        ';
+
+        $stmt = $conn->prepare($sql);
+        return $stmt->executeQuery()->fetchAllAssociative();
+    }
 }
