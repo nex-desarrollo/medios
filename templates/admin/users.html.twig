@@ -32,12 +32,15 @@
                         <div class="card-header">
                             <h4 class="card-title">Inscripciones</h4>
 
-                            <form method="POST" action="{{ path('index_admin')}}">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Email" aria-describedby="button-addon2" name="search_email" />
-                                    <button class="btn btn-outline-primary" id="button-addon2" type="submit">Buscar</button>
-                                </div>
-                            </form>
+                            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                                <form method="POST" action="{{ path('index_admin')}}">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Email" aria-describedby="button-addon2" name="search_email" />
+                                        <button class="btn btn-outline-primary" id="button-addon2" type="submit">Buscar</button>
+                                    </div>
+                                </form>
+                                <a href="{{ path('export') }}" class='btn btn-primary'>Exportar</a>
+                            </div>
                         </div>
                         
                         <div class="table-responsive">

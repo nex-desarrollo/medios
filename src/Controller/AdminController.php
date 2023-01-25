@@ -47,4 +47,29 @@ class AdminController extends AbstractController
             'inscription' => $inscription
         ]);
     }
+
+    #[Route('/admin/exportar', name: 'export')]
+    public function exportUsers(InscriptionRepository $inscRepository) {
+        $data = [['CIF', 'Nombre', 'Email', 'Telefono', 'Provincia', 'Fecha creacion', 'Fecha modificacion', 'Estado']];
+
+        $users = $inscRepository->findAllSortedByDate();
+
+        foreach ($users as $user) {
+            $data[] = array($user->getCIF(), $user->getNombre(), $user->getEmail(), $user->getTelefono(), $user->getProvincia(), $user->getCreated(), $user->getUpdated(), $user->getEstado());
+        }
+
+        // Create a response object
+        $response = new Response(
+            implode("\n", array_map(function ($data) {
+                return implode(',', $data);
+            }, $data))
+        );
+
+        // Set the response headers
+        $response->headers->set('Content-type', 'text/csv');
+        $response->headers->set('Content-Disposition', 'filename="usuarios.csv";');
+
+        // Send the response
+        return $response;
+    }
 }
