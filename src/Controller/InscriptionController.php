@@ -32,6 +32,7 @@ class InscriptionController extends AbstractController
         $form = $this->createForm(InscriptionType::class, $inscription);
         $form->handleRequest($request);
 
+        $error = null;
         if ($form->isSubmitted() && $form->isValid()) {
             if ($inscRepository->isUnique($inscription->getCIF())) {
                 $inscription->setEstado(false);
@@ -42,13 +43,13 @@ class InscriptionController extends AbstractController
                 $entityManager->flush();
                 return $this->redirectToRoute('valid_inscription');
             } else {
-                print_r('El CIF introducido ya existe. Vuelve atrás.');
-                die();
+                $error = 'El CIF introducido ya existe!';
             } 
         }
         
         return $this->render('inscription.html.twig', [
-            'form' => $form
+            'form' => $form,
+            'error'=> $error,
         ]);
     }
 

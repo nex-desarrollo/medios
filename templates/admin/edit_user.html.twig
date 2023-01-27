@@ -63,19 +63,19 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="mb-1">
-                                                    {{ form_label(form.email, 'Correo') }}
+                                                    {{ form_label(form.email, 'Email') }}
                                                     {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="mb-1">
-                                                    {{ form_label(form.telefono, 'Telefono') }}
+                                                    {{ form_label(form.telefono, 'Teléfono') }}
                                                     {{ form_widget(form.telefono, {'attr': {'class': 'form-control'}}) }}
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="mb-1">
-                                                    {{ form_label(form.provincia, 'Provincia') }}
+                                                    {{ form_label(form.provincia, 'Província') }}
                                                     {{ form_widget(form.provincia, {'attr': {'class': 'form-control'}}) }}
                                                 </div>
                                             </div>
@@ -91,6 +91,7 @@
                                                 <div class="mb-1">
                                                     {{ form_label(form.condicioneslegales, 'Condiciones Legales') }}
                                                     {{ form_widget(form.condicioneslegales, {'attr': {'class': 'hidden-row'}}) }}
+                                                    <a href="{{ path('legal') }}">Info</a>
                                                 </div>
                                             </div>
 

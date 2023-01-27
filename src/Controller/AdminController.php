@@ -11,11 +11,12 @@ use App\Repository\InscriptionRepository;
 use App\Form\InscriptionType;
 use App\Entity\Inscription;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 
 class AdminController extends AbstractController
 {
     #[Route('/admin', name: 'index_admin')]
-    public function index(Request $request, InscriptionRepository $inscRepository): Response
+    public function index(Request $request, InscriptionRepository $inscRepository, PaginatorInterface $paginator): Response
     {
         $email = $request->request->get('search_email');
         $cif = $request->request->get('search_CIF');
@@ -27,6 +28,13 @@ class AdminController extends AbstractController
         else
             $inscriptions = $inscRepository->findAllSortedByDate();
         
+
+        $inscriptions = $paginator->paginate(
+            $inscriptions,
+            $request->query->getInt('page', 1),
+            25
+        );
+
         return $this->render('admin/users.html.twig', [
             'email' => $email,
             'CIF' => $cif,
