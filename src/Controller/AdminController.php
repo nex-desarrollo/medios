@@ -63,12 +63,12 @@ class AdminController extends AbstractController
 
     #[Route('/admin/exportar', name: 'export')]
     public function exportUsers(InscriptionRepository $inscRepository) {
-        $data = [['CIF', 'Nombre', 'Email', 'Telefono', 'Provincia', 'Fecha creacion', 'Fecha modificacion', 'Estado']];
+        $data = [['CIF', 'Nombre', 'Email', 'Telefono', 'Provincia', 'Subdominio','Fecha creacion', 'Fecha modificacion', 'Estado']];
 
         $users = $inscRepository->findAllSortedByDate();
 
         foreach ($users as $user) {
-            $data[] = array($user->getCIF(), $user->getNombre(), $user->getEmail(), $user->getTelefono(), $user->getProvincia(), $user->getCreated(), $user->getUpdated(), $user->getEstado() == 0 ? 'pendiente' : 'alta');
+            $data[] = array($user->getCIF(), $user->getNombre(), $user->getEmail(), $user->getTelefono(), $user->getProvincia(), $user->getSubdominio(),$user->getCreated(), $user->getUpdated(), $user->getEstado() == 0 ? 'pendiente' : 'alta');
         }
 
         // Create a response object

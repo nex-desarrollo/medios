@@ -39,6 +39,7 @@ class InscriptionType extends AbstractType
             ->add('nombre')
             ->add('email')
             ->add('telefono')
+            ->add('subdominio')
             ->add('provincia', ChoiceType::class, [
                 'choices' => $this->createChoices()
             ])

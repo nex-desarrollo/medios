@@ -15,7 +15,7 @@ class Inscription
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, unique: true)]
+    #[ORM\Column(length: 255)]
     private ?string $CIF = null;
 
     #[ORM\Column(length: 255)]
@@ -41,6 +41,9 @@ class Inscription
 
     #[ORM\Column]
     private ?bool $estado = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $subdominio = null;
 
     public function getId(): ?int
     {
@@ -148,6 +151,18 @@ class Inscription
 
     public function setEstado(bool $estado): self {
         $this->estado = $estado;
+        return $this;
+    }
+
+    public function getSubdominio(): ?string
+    {
+        return $this->subdominio;
+    }
+
+    public function setSubdominio(?string $subdominio): self
+    {
+        $this->subdominio = $subdominio;
+
         return $this;
     }
 }

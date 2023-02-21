@@ -75,8 +75,14 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="mb-1">
-                                                    {{ form_label(form.provincia, 'Província') }}
+                                                    {{ form_label(form.provincia, 'Provincia') }}
                                                     {{ form_widget(form.provincia, {'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="mb-1">
+                                                    {{ form_label(form.subdominio, 'Subdominio') }}
+                                                    {{ form_widget(form.subdominio, {'attr': {'class': 'form-control'}}) }}
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -91,7 +97,7 @@
                                                 <div class="mb-1">
                                                     {{ form_label(form.condicioneslegales, 'Condiciones Legales') }}
                                                     {{ form_widget(form.condicioneslegales, {'attr': {'class': 'hidden-row'}}) }}
-                                                    <a href="{{ path('legal') }}">Info</a>
+                                                    
                                                 </div>
                                             </div>
 

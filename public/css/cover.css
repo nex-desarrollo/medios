@@ -1,0 +1,73 @@
+@charset "UTF-8";
+/*
+ * Globals
+ */
+
+
+/* Custom default button */
+.btn-light,
+.btn-light:hover,
+.btn-light:focus {
+  color: #FFF;
+  text-shadow: none; /* Prevent inheritance from `body` */
+}
+
+.btn-verde{
+  color: #000000;
+  background-color: #00FC06;
+  border: #FFFFFF;
+}
+.btn-verde:hover{
+  color: #000000;
+  background-color: hsl(121, 70%, 49%);
+  border: #FFFFFF;
+}
+
+
+/*
+ * Base structure
+ */
+
+body {
+  background-image: url('/assets/img/background.jpg');
+  background-size: cover;  
+  background-repeat: no-repeat;
+  font-family: 'Open Sans', sans-serif !important;
+  
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+
+/*
+ * Header
+ */
+
+.nav-masthead .nav-link {
+  color: rgba(255, 255, 255, .5);
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.banner-inscripcion{
+  margin-bottom: 25px;
+}
+
+.form-bloque{
+  background-color: #fff;
+}
