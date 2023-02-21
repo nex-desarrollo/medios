@@ -18,12 +18,20 @@ use Symfony\Bundle\SecurityBundle\Security;
 class InscriptionController extends AbstractController
 {
     #[Route('/', name: 'inscription_home')]
-    public function index(Security $security): Response
+    public function index(Request $request): Response
     {
-        if ($security->getUser() != null) {
-            return $this->redirect('/admin');
-        }
-        return $this->render('/frontend/index.html.twig');
+
+        $host = explode(".",$request->getHost());
+        if(count($host) == 1)
+            $subdomain = '';
+        else
+            $subdomain = $host[0];
+
+
+        
+        return $this->render('/frontend/index.html.twig',[
+            'subdomain' => $subdomain
+        ]);
     }
 
     #[Route('/hazte-cliente', name: 'inscription_form')]
@@ -72,14 +80,12 @@ class InscriptionController extends AbstractController
 
         return $this->render('/frontend/inscription.html.twig', [
            'provincias' => $provincias,
-           'message' => $message
+           'message' => $message,
+           'subdomain' => $subdomain
         ]);
     }
 
-    #[Route('/hazte-cliente/OK', name: 'valid_inscription')]
-    public function success() {
-        return $this->render('valid_inscription.html.twig');
-    }
+   
 
     
 }
